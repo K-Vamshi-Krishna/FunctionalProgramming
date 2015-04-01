@@ -52,3 +52,28 @@ object Sum extends App{
 	}	 
 
 }
+
+object Product extends App {
+	val list = List(1,2,3,4,5)
+	// tail-recursion
+	def product2(ints: List[Int]): Int ={
+	@tailrec
+	def productAcc(ints: List[Int],acc:Int) Int={
+	 ints match{
+        case Nil => acc
+        case x::tail => productAcc(tail,acc *x)
+	 }
+	 productAcc(ints,1)
+	}
+}
+object Max extends App {
+	def max(ints: List[Int]): Int={
+	def maxAcc(ints: List[Int], theMax: Int): Int=ints match{
+	  case Nil => theMax
+	  case x :: tail =>
+	   val newMax = if(x > theMax) x else theMax
+	   maxAcc(tail,newMax)
+	 }
+	 maxAcc(ints,0)
+	}
+}
