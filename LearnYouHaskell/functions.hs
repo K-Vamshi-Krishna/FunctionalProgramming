@@ -22,4 +22,12 @@ flip' f = g
 flip'' :: (a-> b -> c)::(b->c->a)
 flip'' f x y = f y x
 
+map'' :: (a->b) -> [a] -> [b]
+map'' f xs = foldr ( \x acc-> f(x):acc) [] xs
+
+first :: (a,a,a) -> a
+first (x,y,z) = x
+
+
+zipWith' (a->b->c) -> [a]->[b]->[c]
 
