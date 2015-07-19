@@ -33,3 +33,19 @@ main = do
   replicateM_ t $ do
   	s <- getLine
 	print $ full s 0 0 0 0
+
+
+
+
+parse s rg yb =
+	rg == 0 && yb == 0
+parse (x:xs) rg yb
+	| abs rg > 1 = False
+	| abs yb > 1 = False
+	| x == 'R' = parse xs (rg+1) yb
+	| x == 'G' = parse xs (rg-1) yb
+	| x == 'Y' = parse xs rg (yb+1)
+	| x == 'B' = parse xs rg (yb-1)
+
+
+-- getContents >>= mapM_ (print. (\x -> parse x 0 0)). tail. lines
